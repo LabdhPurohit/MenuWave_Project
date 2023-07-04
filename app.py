@@ -361,6 +361,7 @@ def forget():
 @app.route('/delete')
 def delete():
     menu=[]
+    print(f"Menu Empty {menu}")
     cursor = connection.cursor()
     cursor.execute(f'UPDATE users SET resto_name = NULL, link = NULL WHERE email = "{email}";')
     connection.commit()
