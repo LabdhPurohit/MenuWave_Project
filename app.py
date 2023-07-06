@@ -25,10 +25,11 @@ T=True
 
 
 db_config = {
-    'host': 'sql6.freesqldatabase.com',
-    'database': 'sql6630251',
-    'user': 'sql6630251',
-    'password': 'iGa6S4wt6u'
+    'host': '35.188.126.64',
+    'user': 'root',
+    'password': 'Disl@b6890',
+    'database': 'mw_db',
+    'port': 3306
 }
 
 connection = mysql.connector.connect(**db_config)
@@ -68,7 +69,7 @@ def contact():
     subject = 'Feedback From a User'
     message = f'Name of the user: {temp_name}\nEmail of User: {temp_email}\nMessage from User: {temp_des}'
 
-        # Create a multipart message object
+    # Create a multipart message object
     msg = MIMEMultipart()
     msg['From'] = sender_email
     msg['To'] = recipient_email
@@ -361,7 +362,6 @@ def forget():
 @app.route('/delete')
 def delete():
     menu.clear()
-    print(f"Menu Empty {menu}")
     cursor = connection.cursor()
     cursor.execute(f'UPDATE users SET resto_name = NULL, link = NULL WHERE email = "{email}";')
     connection.commit()
@@ -414,7 +414,6 @@ def delete():
     delete_file(access_token, owner, repo, file_path, branch)
     file_path = f'{email}/qr_code.png'
     delete_file(access_token, owner, repo, file_path, branch)
-
     return render_template('home.html', output="File Deleted Successfully", show_element1=True)
     
 
