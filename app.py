@@ -360,7 +360,7 @@ def forget():
 
 @app.route('/delete')
 def delete():
-    menu=[]
+    menu.clear()
     print(f"Menu Empty {menu}")
     cursor = connection.cursor()
     cursor.execute(f'UPDATE users SET resto_name = NULL, link = NULL WHERE email = "{email}";')
